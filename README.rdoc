@@ -4,32 +4,38 @@ Email::Valid is a simple class to check the validity of email addresses, copied 
 
 ==Quick Start
 
-Email::Valid.address(address) => true or false
+  if Email::Valid.address(email_address)
+    # do something
+  end
 
 ==Usage
 
-Class Method:
+Call the class method:
 
-Email::Valid.address(address) => true or false
+  if Email::Valid.address(email_address)
+    # do something
+  end
 
-or
+or the instance methods: 
 
-Instance Method: 
+  email = Email::Valid.new(:check_domain => true, :check_rfc822 => true)
 
-email = Email::Valid.new(:check_domain => true, :check_rfc822 => true)
+  if email.valid(email_address)
+    # do something
+  else 
+    raise "Invalid Email: #{email.errors.join ', '}"
+  end
 
-if email.valid(address)
-  # do something
-else 
-  raise "Invalid Email: #{email.errors.join ', '}"
-end
+Possible arguments to Email::Valid.new
 
 :check_domain - checks the mx record for the domain, default true
+
 :check_rfc822 - checks the address against the rfc822 pattern, default true
 
-Other methods:
+Other instance methods:
 
 valid_domain(email) - returns true if it finds a valid mx record, false otherwise
+
 valid_rfc822(email) - returns true if it matches the rfc822 pattern, false otherwise
 
 ==Credit
