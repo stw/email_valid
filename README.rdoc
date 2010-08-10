@@ -1,0 +1,41 @@
+=Email::Valid
+
+Email::Valid is a simple class to check the validity of email addresses, copied from the perl Email::Valid module.
+
+==Quick Start
+
+Email::Valid.address(address) => true or false
+
+==Usage
+
+Class Method:
+
+Email::Valid.address(address) => true or false
+
+or
+
+Instance Method: 
+
+email = Email::Valid.new(:check_domain => true, :check_rfc822 => true)
+
+if email.valid(address)
+  # do something
+else 
+  raise "Invalid Email: #{email.errors.join ', '}"
+end
+
+:check_domain - checks the mx record for the domain, default true
+:check_rfc822 - checks the address against the rfc822 pattern, default true
+
+Other methods:
+
+valid_domain(email) - returns true if it finds a valid mx record, false otherwise
+valid_rfc822(email) - returns true if it matches the rfc822 pattern, false otherwise
+
+==Credit
+
+This is an incomplete adaptation of the perl Email::Valid module.
+
+http://search.cpan.org/~rjbs/Email-Valid-0.184/lib/Email/Valid.pm
+
+
